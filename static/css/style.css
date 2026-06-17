@@ -64,6 +64,7 @@ body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     min-height: 100vh;
+    min-height: 100dvh;
     overflow: hidden;
     position: relative;
     transition: background-color 0.4s ease, color 0.4s ease;
@@ -114,8 +115,11 @@ body {
 .app-container {
     display: grid;
     grid-template-columns: 280px 1fr;
+    grid-template-rows: 1fr;
     height: 100vh;
+    height: 100dvh;
     max-height: 100vh;
+    max-height: 100dvh;
     padding: 16px;
     gap: 16px;
 }
@@ -345,6 +349,7 @@ body {
 .main-content {
     position: relative;
     height: 100%;
+    min-height: 0;
 }
 
 .panel {
@@ -878,10 +883,13 @@ body {
     /* Layout adjustments */
     .app-container {
         grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
         padding: 12px;
         gap: 12px;
         height: 100vh;
+        height: 100dvh;
         max-height: 100vh;
+        max-height: 100dvh;
     }
 
     /* Sidebar drawer layout on mobile */
@@ -891,6 +899,7 @@ body {
         left: -320px; /* Hide completely offscreen */
         width: 300px;
         height: 100vh;
+        height: 100dvh;
         z-index: 100;
         border-radius: 0 20px 20px 0;
         transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);

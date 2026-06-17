@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IntellectAI - Sai Intellect Solutions Chatbot</title>
+    <title>IntellectAI - SAIntellect Solutions Chatbot</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Marked.js for Markdown parsing -->
@@ -15,24 +17,26 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body class="dark-theme">
     <div class="background-glow"></div>
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
-    
+
     <div class="app-container">
         <!-- Sidebar -->
         <aside class="sidebar animate-fade-in">
             <div class="sidebar-header">
                 <div class="sidebar-brand-wrapper">
                     <a href="/" class="logo" style="text-decoration: none; display: block;">
-                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="SAIntellect Solutions" class="company-logo">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="SAIntellect Solutions"
+                            class="company-logo">
                     </a>
                     <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close Sidebar">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
             </div>
-            
+
             <nav class="sidebar-nav">
                 <div class="nav-section">
                     <span class="section-title">Navigation</span>
@@ -40,7 +44,8 @@
                         <i class="fa-solid fa-comments"></i> Chat Assistant
                     </button>
                     <button class="nav-btn" id="leads-tab-btn">
-                        <i class="fa-solid fa-address-book"></i> View Leads <span class="badge" id="leads-count">0</span>
+                        <i class="fa-solid fa-address-book"></i> View Leads <span class="badge"
+                            id="leads-count">0</span>
                     </button>
                 </div>
 
@@ -103,7 +108,8 @@
                         </div>
                     </div>
                     <div class="header-actions">
-                        <span class="client-badge"><i class="fa-solid fa-shield-halved"></i> <span>Secure Session</span></span>
+                        <span class="client-badge"><i class="fa-solid fa-shield-halved"></i> <span>Secure
+                                Session</span></span>
                     </div>
                 </header>
 
@@ -117,8 +123,10 @@
                         <button class="reply-chip" data-msg="What services do you offer?">🌐 Services</button>
                         <button class="reply-chip" data-msg="What software products do you offer?">📦 Products</button>
                         <button class="reply-chip" data-msg="Tell me about digital marketing.">📈 Marketing</button>
-                        <button class="reply-chip" data-msg="What is the Pratibhabatee Initiative?">👩‍💻 Pratibhabatee</button>
-                        <button class="reply-chip" data-msg="I want to schedule a consultation.">📅 Schedule Consultation</button>
+                        <button class="reply-chip" data-msg="What is the Pratibhabatee Initiative?">👩‍💻
+                            Pratibhabatee</button>
+                        <button class="reply-chip" data-msg="I want to schedule a consultation.">📅 Schedule
+                            Consultation</button>
                         <button class="reply-chip" data-msg="Where is your office located?">📍 Contact Info</button>
                     </div>
                 </div>
@@ -126,10 +134,13 @@
                 <!-- Input Panel -->
                 <footer class="input-panel">
                     <form id="chat-form" class="chat-form">
-                        <button type="button" id="voice-input-btn" class="input-action-btn" title="Voice Input (Speech-to-Text)">
+                        <button type="button" id="voice-input-btn" class="input-action-btn"
+                            title="Voice Input (Speech-to-Text)">
                             <i class="fa-solid fa-microphone"></i>
                         </button>
-                        <input type="text" id="user-input" placeholder="Ask about IT/AI services, software products, marketing, or scheduling..." autocomplete="off" required>
+                        <input type="text" id="user-input"
+                            placeholder="Ask about IT/AI services, software products, marketing, or scheduling..."
+                            autocomplete="off" required>
                         <button type="submit" class="send-btn" id="send-button">
                             <span>Send</span> <i class="fa-solid fa-paper-plane"></i>
                         </button>
@@ -169,7 +180,8 @@
                             </thead>
                             <tbody id="leads-table-body">
                                 <tr>
-                                    <td colspan="6" class="no-data">No consultation leads generated yet. Try typing "schedule" in the chat!</td>
+                                    <td colspan="6" class="no-data">No consultation leads generated yet. Try typing
+                                        "schedule" in the chat!</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -182,4 +194,5 @@
     <!-- Custom Script -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
+
 </html>
