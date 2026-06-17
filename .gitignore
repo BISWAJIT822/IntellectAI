@@ -1,0 +1,15 @@
+# Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Databases
+chatbot.db
+
+# Model/Runtime artifacts
+artifacts/
+.tempmediaStorage/
+*.png
+*.webp
+*.mp4
