@@ -20,6 +20,41 @@ document.addEventListener('DOMContentLoaded', () => {
     // Quick nav buttons in sidebar
     const quickNavButtons = document.querySelectorAll('.quick-nav-btn');
 
+    // Sidebar elements for mobile responsiveness
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
+    const menuToggleChat = document.getElementById('menu-toggle-chat');
+    const menuToggleLeads = document.getElementById('menu-toggle-leads');
+    const sidebarCloseBtn = document.getElementById('sidebar-close-btn');
+
+    // Responsive sidebar toggles
+    function toggleSidebar() {
+        sidebar.classList.toggle('open');
+        sidebarOverlay.classList.toggle('active');
+    }
+
+    function closeSidebar() {
+        sidebar.classList.remove('open');
+        sidebarOverlay.classList.remove('active');
+    }
+
+    if (menuToggleChat) menuToggleChat.addEventListener('click', toggleSidebar);
+    if (menuToggleLeads) menuToggleLeads.addEventListener('click', toggleSidebar);
+    if (sidebarCloseBtn) sidebarCloseBtn.addEventListener('click', closeSidebar);
+    if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
+
+    // Auto-close sidebar on mobile when navigating or performing actions
+    const sidebarInteractiveElements = document.querySelectorAll(
+        '.sidebar-nav .nav-btn, .sidebar-nav .quick-nav-btn, .sidebar-footer .footer-btn'
+    );
+    sidebarInteractiveElements.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (window.innerWidth <= 900) {
+                closeSidebar();
+            }
+        });
+    });
+
     // Check if admin mode is enabled via URL query parameter
     const urlParams = new URLSearchParams(window.location.search);
     const isAdmin = urlParams.get('admin') === 'true';

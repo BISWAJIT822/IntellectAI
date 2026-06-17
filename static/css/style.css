@@ -120,14 +120,77 @@ body {
     gap: 16px;
 }
 
-@media (max-width: 900px) {
-    .app-container {
-        grid-template-columns: 1fr;
-    }
-    .sidebar {
-        display: none; /* In production, we'd add a toggle menu, but let's keep it robust and responsive */
-    }
+/* Header and Mobile Navigation Elements (hidden on desktop) */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
+
+.mobile-menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+    background: var(--color-primary-glow);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.sidebar-brand-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.sidebar-close-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.sidebar-close-btn:hover {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 8, 16, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
 
 /* Sidebar Styling */
 .sidebar {
@@ -809,3 +872,182 @@ body {
 .animate-fade-in {
     animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
+
+/* Media Queries for Responsive Design */
+@media (max-width: 900px) {
+    /* Layout adjustments */
+    .app-container {
+        grid-template-columns: 1fr;
+        padding: 12px;
+        gap: 12px;
+        height: 100vh;
+        max-height: 100vh;
+    }
+
+    /* Sidebar drawer layout on mobile */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -320px; /* Hide completely offscreen */
+        width: 300px;
+        height: 100vh;
+        z-index: 100;
+        border-radius: 0 20px 20px 0;
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 8px 0 32px var(--glass-shadow);
+        background: var(--bg-secondary);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+    }
+
+    /* Open state for sidebar drawer */
+    .sidebar.open {
+        transform: translateX(320px);
+    }
+
+    /* Show close button in sidebar and menu toggle in headers */
+    .sidebar-close-btn {
+        display: flex;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    /* Overlay visible when sidebar drawer is open */
+    .sidebar-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Main content panel layout adjustment */
+    .panel {
+        border-radius: 16px;
+    }
+
+    /* Adjust chat messages padding and bubble size */
+    .chat-messages {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .message {
+        max-width: 85%;
+        padding: 12px 16px;
+        font-size: 0.92rem;
+    }
+}
+
+@media (max-width: 600px) {
+    /* App padding further reduced for small viewports */
+    .app-container {
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .panel-header {
+        padding: 12px 16px;
+    }
+
+    .bot-info {
+        gap: 10px;
+    }
+
+    .bot-avatar {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .bot-info h2 {
+        font-size: 1rem;
+    }
+
+    .status-text {
+        font-size: 0.75rem;
+    }
+
+    /* Hide text inside Secure Session badge to fit header */
+    .client-badge span {
+        display: none;
+    }
+    
+    .client-badge {
+        padding: 6px;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        justify-content: center;
+    }
+
+    /* Adjust message bubbles for very small screens */
+    .message {
+        max-width: 90%;
+    }
+
+    /* Input panel spacing and layout */
+    .input-panel {
+        padding: 12px 16px 16px;
+    }
+
+    .chat-form {
+        padding: 4px 8px;
+        gap: 8px;
+        border-radius: 12px;
+    }
+
+    .chat-form input {
+        padding: 8px 2px;
+        font-size: 0.9rem;
+    }
+
+    /* Hide the Send button text on mobile to avoid squeezing input */
+    .send-btn {
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .send-btn span {
+        display: none;
+    }
+
+    .send-btn i {
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .input-action-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+
+    /* Quick replies optimization */
+    .quick-replies-container {
+        padding: 8px 16px;
+    }
+
+    .reply-chip {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    /* Leads section adjustments */
+    .leads-content {
+        padding: 12px;
+    }
+
+    .panel-title-container h2 {
+        font-size: 1.1rem;
+    }
+
+    .panel-title-container p {
+        font-size: 0.78rem;
+    }
+
+    .refresh-btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+}
+

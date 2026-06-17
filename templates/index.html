@@ -17,14 +17,20 @@
 </head>
 <body class="dark-theme">
     <div class="background-glow"></div>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
     
     <div class="app-container">
         <!-- Sidebar -->
         <aside class="sidebar animate-fade-in">
             <div class="sidebar-header">
-                <a href="/" class="logo" style="text-decoration: none; display: block;">
-                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="SAIntellect Solutions" class="company-logo">
-                </a>
+                <div class="sidebar-brand-wrapper">
+                    <a href="/" class="logo" style="text-decoration: none; display: block;">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="SAIntellect Solutions" class="company-logo">
+                    </a>
+                    <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close Sidebar">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
             </div>
             
             <nav class="sidebar-nav">
@@ -79,20 +85,25 @@
             <!-- Chat Panel -->
             <section class="panel active" id="chat-panel">
                 <header class="panel-header">
-                    <div class="bot-info">
-                        <div class="avatar-wrapper">
-                            <div class="bot-avatar">
-                                <i class="fa-solid fa-robot"></i>
+                    <div class="header-left">
+                        <button class="mobile-menu-toggle" id="menu-toggle-chat" aria-label="Open Sidebar">
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
+                        <div class="bot-info">
+                            <div class="avatar-wrapper">
+                                <div class="bot-avatar">
+                                    <i class="fa-solid fa-robot"></i>
+                                </div>
+                                <span class="status-indicator online"></span>
                             </div>
-                            <span class="status-indicator online"></span>
-                        </div>
-                        <div>
-                            <h2>IntellectAI</h2>
-                            <p class="status-text">Online | Consulting Assistant</p>
+                            <div>
+                                <h2>IntellectAI</h2>
+                                <p class="status-text">Online | Consulting Assistant</p>
+                            </div>
                         </div>
                     </div>
                     <div class="header-actions">
-                        <span class="client-badge"><i class="fa-solid fa-shield-halved"></i> Secure Session</span>
+                        <span class="client-badge"><i class="fa-solid fa-shield-halved"></i> <span>Secure Session</span></span>
                     </div>
                 </header>
 
@@ -129,9 +140,14 @@
             <!-- Leads Panel -->
             <section class="panel" id="leads-panel">
                 <header class="panel-header">
-                    <div class="panel-title-container">
-                        <h2><i class="fa-solid fa-address-book"></i> Consultation Leads & Requests</h2>
-                        <p>Captured leads from chatbot consulting flow stored in SQLite database.</p>
+                    <div class="header-left">
+                        <button class="mobile-menu-toggle" id="menu-toggle-leads" aria-label="Open Sidebar">
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
+                        <div class="panel-title-container">
+                            <h2><i class="fa-solid fa-address-book"></i> Consultation Leads & Requests</h2>
+                            <p>Captured leads from chatbot consulting flow stored in SQLite database.</p>
+                        </div>
                     </div>
                     <button class="refresh-btn" id="refresh-leads-btn">
                         <i class="fa-solid fa-arrows-rotate"></i> Refresh
