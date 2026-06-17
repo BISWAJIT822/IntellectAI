@@ -1,7 +1,10 @@
 import sqlite3
 import os
 
-DB_PATH = os.path.join(os.path.dirname(__file__), 'chatbot.db')
+if os.environ.get('VERCEL') == '1' or os.environ.get('VERCEL_ENV'):
+    DB_PATH = '/tmp/chatbot.db'
+else:
+    DB_PATH = os.path.join(os.path.dirname(__file__), 'chatbot.db')
 
 def get_db_connection():
     conn = sqlite3.connect(DB_PATH)
