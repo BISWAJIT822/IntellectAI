@@ -11,5 +11,6 @@ chatbot.db
 artifacts/
 .tempmediaStorage/
 *.png
+!static/images/logo.png
 *.webp
 *.mp4
